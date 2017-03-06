@@ -1,39 +1,74 @@
 queue()
-   .defer(d3.json, "/stuff")
-   .await(makeGraphs);
+    .defer(d3.json, "/crime")
+    .await(makeGraphs);
+
+function makeGraphs(error, projectsJson) {
 
 
-function makeGraphs(error, sourceJson) {
-    var crime_DataSource = sourceJson;
+    //Clean projectsJson data
+    var crime_DataProjects = projectsJson;
     var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
-    crime_DataSource.forEach(function (d) {
-        d["date_posted"] = dateFormat.parse(d["date_posted"]);
-        d["date_posted"].setDate(1);
+    crime_DataProjects.forEach(function (d) {
         d["Attempts or threats to murder, assaults, harassments and related offences 2004"] = +d["Attempts or threats to murder, assaults, harassments and related offences 2004"];
     });
-}
 
-    var ndx = crossfilter(crime_DataSource);
 
-    var dateDim = ndx.dimension(function (d) {
-        return d["date_posted"];
+    //Creating Crossfilter
+    var ndx = crossfilter(crime_DataProjects);
+
+    //Define Dimensions
+
+    var countyDim = ndx.dimension(function(d){
+        return d["County"]
     });
 
-    var attemps2004Dim = ndx.dimension(function (d) {
-        return d["attempts_2004"];
+    var attempts2004Dim = ndx.dimension(function (d) {
+        return d["Attempts or threats to murder, assaults, harassments and related offences 2004"];
     });
 
-    var numSourceAttemps2004 = attemps2004Dim.group();
+    var divisionsDim = ndx.dimension(function (d) {
+        return d['Divisions']
 
-    var attempts2004Chart = dc.rowChart("#attempt-2004-row-chart");
+    })
 
 
-    attempts2004Chart
-        .width(300)
-        .height(250)
-        .dimension(attemps2004Dim)
-        .group(numSourceAttemps2004)
-        .xAxis().ticks(4);
+    //Calculate metrics
+    var numCrimesByCounty = countyDim.group();
+    var numProjectsAttempts2004 = attempts2004Dim.group();
+    var numProjectsByDivision = divisionsDim.group();
 
+
+    //Define values (to be used in charts)
+
+
+    //Charts
+
+
+    //var attemptsLevelChart = dc.rowChart("#attempts-2004-row-chart");
+
+
+    var attemptsLevelChart = dc.rowChart("#attempts-2004-row-chart");
+
+    var divisionPieChart = dc.pieChart("#test")
+
+     selectField = dc.selectMenu('#menu-select')
+       .dimension(countyDim)
+       .group(numCrimesByCounty);
+
+    attemptsLevelChart
+        .width(900)
+        .height(450)
+        .dimension(attempts2004Dim)
+        .group(numProjectsByDivision)
+        .xAxis().ticks(10);
+
+    divisionPieChart
+      .height(500)
+       .radius(410)
+       .innerRadius(10)
+       .transitionDuration(1500)
+       .dimension(countyDim)
+       .group(numProjectsAttempts2004);
 
     dc.renderAll();
+}

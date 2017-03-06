@@ -22,14 +22,15 @@ body.application hr {
 
 .chart-wrapper {
   background: #fff;
-  border: 1px solid #e2e2e2;
+  border: 0px solid #e2e2e2;
   border-radius: 3px;
   margin-bottom: 10px;
 }
 
 .chart-wrapper .chart-title {
-  border-bottom: 1px solid #d7d7d7;
-  color: #fff3f3;
+  border-bottom: 0px solid #42d76b;
+  color: #42ffd1;
+
   font-size: 14px;
   font-weight: 200;
   padding: 7px 10px 4px;

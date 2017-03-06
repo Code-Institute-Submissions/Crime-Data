@@ -27,7 +27,7 @@ div.dc-chart {
 }
 
 .dc-chart .pie-slice {
-    fill: white;
+    fill: #ff4c63;
     font-size: 12px;
     cursor: pointer;
 }

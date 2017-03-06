@@ -4,9 +4,9 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
- body {
+body {
     overflow-x: hidden;
- }
+}
 
 /* Toggle Styles */
 
@@ -22,6 +22,7 @@
     padding-left: 250px;
 }
 
+
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -30,7 +31,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #ff5b56;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -56,28 +57,28 @@
 
 .sidebar-nav {
     position: absolute;
-    top: 0;
+    top: 20px;
     width: 250px;
     margin: 0;
-    padding: 0;
+    padding: 0px;
     list-style: none;
 }
 
 .sidebar-nav li {
     text-indent: 20px;
-    line-height: 40px;
+    line-height: 50px;
 }
 
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #ffffff;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-nav li a:active,
@@ -100,7 +101,7 @@
     background: none;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
     #wrapper {
         padding-left: 250px;
     }
@@ -126,4 +127,14 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+/*
+.btn-btn-danger {
+    padding: 0;
+    border: none;
+    background: none;
+}*/
+ul {
+    list-style: none;
 }
