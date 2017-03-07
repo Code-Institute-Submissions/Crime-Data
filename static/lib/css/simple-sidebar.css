@@ -138,3 +138,7 @@ body {
 ul {
     list-style: none;
 }
+
+#menu-toggle.btn.btn-default.arrow-left {
+    background-color: #FF5B56;
+}

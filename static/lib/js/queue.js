@@ -78,3 +78,5 @@
   else if (typeof module === "object" && module.exports) module.exports = queue;
   else this.queue = queue;
 })();
+
+

@@ -18,7 +18,7 @@
 }
 
 #total-projects {
-   background: #33CC99;
+   background: #ff5b56;
    width: 200px;
    position: relative;
    height: 60px;
@@ -31,7 +31,7 @@
 }
 
 #net-donations {
-   background: #33CC99;
+   background: #ff5b56;
    width: 200px;
    position: relative;
    height: 60px;
@@ -72,3 +72,4 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+

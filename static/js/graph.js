@@ -5,6 +5,7 @@ queue()
 function makeGraphs(error, projectsJson) {
 
 
+
     //Clean projectsJson data
     var crime_DataProjects = projectsJson;
     var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
@@ -63,12 +64,18 @@ function makeGraphs(error, projectsJson) {
         .xAxis().ticks(10);
 
     divisionPieChart
-      .height(500)
-       .radius(410)
+      .height(900)
+      .width(450)
+       .radius(200)
        .innerRadius(10)
        .transitionDuration(1500)
        .dimension(countyDim)
        .group(numProjectsAttempts2004);
 
+
+
+
     dc.renderAll();
+
+
 }
