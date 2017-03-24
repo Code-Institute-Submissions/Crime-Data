@@ -50,7 +50,7 @@ def crime_new_data():
               'County': True,
               '_id': False}
 
-    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
+    with MongoClient(MONGODB_URI) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
 
         new_data = collection.find(projection=FIELDS)
