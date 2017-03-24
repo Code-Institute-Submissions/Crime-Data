@@ -1495,7 +1495,7 @@ hr {
 }
 
 .h5, h5 {
-    font-size: 14px
+    font-size: 20px
 }
 
 .h6, h6 {
@@ -3430,7 +3430,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 
 .btn-default {
-    color: #333;
+    color: white;
     background-color: #FF5B56;
     border-color: #ccc
 }

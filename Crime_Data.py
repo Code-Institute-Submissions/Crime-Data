@@ -1,200 +1,60 @@
+import json
+
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
-import json
+import os
 
 app = Flask(__name__)
 
+# code for running locally
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-
 DBS_NAME = 'Crime_Data'
-COLLECTION_NAME = 'projects'
+COLLECTION_NAME = 'new_data'
+# code for running locally
 
+# code for running on heroku
+# MONGODB_URI = os.getenv('MONGODB_URI')
+# DBS_NAME = os.getenv('MONGO_DB_NAME','Crime_Data')
+# COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME','Crime_Data')
+# code for running on heroku
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
+
 @app.route("/crime")
-def crime_projects():
-    FIELDS = {'x': True, 'y': True,
+def crime_new_data():
+    FIELDS = {'Theft and related offences': True,
+              'Kidnapping and related offences': True,
+              'Public order and other social code offences': True,
+              'Damage to property and to the environment': True,
+              'Offences against government, justice procedures and organisation of crime': True,
+              'Burglary and related offences': True,
+              'Fraud, deception and related offences': True,
+              'Controlled drug offences': True,
+              'Weapons and Explosives Offences': True,
               'Station': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2004': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2005': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2006': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2007': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2008': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2009': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2010': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2011': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2012': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2013': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2014': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2015': True,
-              'Attempts or threats to murder, assaults, harassments and related offences 2016': True,
-              'Divisions': True,
-              'Dangerous or negligent acts 2003': True,
-              'Dangerous or negligent acts 2004': True,
-              'Dangerous or negligent acts 2005': True,
-              'Dangerous or negligent acts 2006': True,
-              'Dangerous or negligent acts 2007': True,
-              'Dangerous or negligent acts 2008': True,
-              'Dangerous or negligent acts 2009': True,
-              'Dangerous or negligent acts 2010': True,
-              'Dangerous or negligent acts 2011': True,
-              'Dangerous or negligent acts 2012': True,
-              'Dangerous or negligent acts 2013': True,
-              'Dangerous or negligent acts 2014': True,
-              'Dangerous or negligent acts 2015': True,
-              'Dangerous or negligent acts 2016': True,
-              'Kidnapping and related offences 2003': True,
-              'Kidnapping and related offences 2004': True,
-              'Kidnapping and related offences 2005': True,
-              'Kidnapping and related offences 2006': True,
-              'Kidnapping and related offences 2007': True,
-              'Kidnapping and related offences 2008': True,
-              'Kidnapping and related offences 2009': True,
-              'Kidnapping and related offences 2010': True,
-              'Kidnapping and related offences 2011': True,
-              'Kidnapping and related offences 2012': True,
-              'Kidnapping and related offences 2013': True,
-              'Kidnapping and related offences 2014': True,
-              'Kidnapping and related offences 2015': True,
-              'Kidnapping and related offences 2016': True,
-              'Robbery, extortion and hijacking offences 2003': True,
-              'Robbery, extortion and hijacking offences 2004': True,
-              'Robbery, extortion and hijacking offences 2005': True,
-              'Robbery, extortion and hijacking offences 2006': True,
-              'Robbery, extortion and hijacking offences 2007': True,
-              'Robbery, extortion and hijacking offences 2008': True,
-              'Robbery, extortion and hijacking offences 2009': True,
-              'Robbery, extortion and hijacking offences 2010': True,
-              'Robbery, extortion and hijacking offences 2011': True,
-              'Robbery, extortion and hijacking offences 2012': True,
-              'Robbery, extortion and hijacking offences 2013': True,
-              'Robbery, extortion and hijacking offences 2014': True,
-              'Robbery, extortion and hijacking offences 2015': True,
-              'Robbery, extortion and hijacking offences 2016': True,
-              'Burglary and related offences 2003': True,
-              'Burglary and related offences 2004': True,
-              'Burglary and related offences 2005': True,
-              'Burglary and related offences 2006': True,
-              'Burglary and related offences 2007': True,
-              'Burglary and related offences 2008': True,
-              'Burglary and related offences 2009': True,
-              'Burglary and related offences 2010': True,
-              'Burglary and related offences 2011': True,
-              'Burglary and related offences 2012': True,
-              'Burglary and related offences 2013': True,
-              'Burglary and related offences 2014': True,
-              'Burglary and related offences 2015': True,
-              'Burglary and related offences 2016': True,
-              'Theft and related offences 2003': True,
-              'Theft and related offences 2004': True,
-              'Theft and related offences 2005': True,
-              'Theft and related offences 2006': True,
-              'Theft and related offences 2007': True,
-              'Theft and related offences 2008': True,
-              'Theft and related offences 2009': True,
-              'Theft and related offences 2010': True,
-              'Theft and related offences 2011': True,
-              'Theft and related offences 2012': True,
-              'Theft and related offences 2013': True,
-              'Theft and related offences 2014': True,
-              'Theft and related offences 2015': True,
-              'Theft and related offences 2016': True,
-              'Fraud, deception and related offences 2004': True,
-              'Fraud, deception and related offences 2005': True,
-              'Fraud, deception and related offences 2006': True,
-              'Fraud, deception and related offences 2007': True,
-              'Fraud, deception and related offences 2008': True,
-              'Fraud, deception and related offences 2009': True,
-              'Fraud, deception and related offences 2010': True,
-              'Fraud, deception and related offences 2011': True,
-              'Fraud, deception and related offences 2012': True,
-              'Fraud, deception and related offences 2013': True,
-              'Fraud, deception and related offences 2014': True,
-              'Fraud, deception and related offences 2015': True,
-              'Fraud, deception and related offences 2016': True,
-              'Controlled drug offences 2004': True,
-              'Controlled drug offences 2005': True,
-              'Controlled drug offences 2006': True,
-              'Controlled drug offences 2007': True,
-              'Controlled drug offences 2008': True,
-              'Controlled drug offences 2009': True,
-              'Controlled drug offences 2010': True,
-              'Controlled drug offences 2011': True,
-              'Controlled drug offences 2012': True,
-              'Controlled drug offences 2013': True,
-              'Controlled drug offences 2014': True,
-              'Controlled drug offences 2015': True,
-              'Controlled drug offences 2016': True,
-              'Weapons and Explosives Offences 2004': True,
-              'Weapons and Explosives Offences 2005': True,
-              'Weapons and Explosives Offences 2006': True,
-              'Weapons and Explosives Offences 2007': True,
-              'Weapons and Explosives Offences 2008': True,
-              'Weapons and Explosives Offences 2009': True,
-              'Weapons and Explosives Offences 2010': True,
-              'Weapons and Explosives Offences 2011': True,
-              'Weapons and Explosives Offences 2012': True,
-              'Weapons and Explosives Offences 2013': True,
-              'Weapons and Explosives Offences 2014': True,
-              'Weapons and Explosives Offences 2015': True,
-              'Weapons and Explosives Offences 2016': True,
-              'Damage to property and to the environment 2004': True,
-              'Damage to property and to the environment 2005': True,
-              'Damage to property and to the environment 2006': True,
-              'Damage to property and to the environment 2007': True,
-              'Damage to property and to the environment 2008': True,
-              'Damage to property and to the environment 2009': True,
-              'Damage to property and to the environment 2010': True,
-              'Damage to property and to the environment 2011': True,
-              'Damage to property and to the environment 2012': True,
-              'Damage to property and to the environment 2013': True,
-              'Damage to property and to the environment 2014': True,
-              'Damage to property and to the environment 2015': True,
-              'Damage to property and to the environment 2016': True,
-              'Public order and other social code offences 2004': True,
-              'Public order and other social code offences 2005': True,
-              'Public order and other social code offences 2006': True,
-              'Public order and other social code offences 2007': True,
-              'Public order and other social code offences 2008': True,
-              'Public order and other social code offences 2009': True,
-              'Public order and other social code offences 2010': True,
-              'Public order and other social code offences 2011': True,
-              'Public order and other social code offences 2012': True,
-              'Public order and other social code offences 2013': True,
-              'Public order and other social code offences 2014': True,
-              'Public order and other social code offences 2015': True,
-              'Public order and other social code offences 2016': True,
-              'Offences against government, justice procedures and organisation of crime 2004': True,
-              'Offences against government, justice procedures and organisation of crime 2005': True,
-              'Offences against government, justice procedures and organisation of crime 2006': True,
-              'Offences against government, justice procedures and organisation of crime 2007': True,
-              'Offences against government, justice procedures and organisation of crime 2008': True,
-              'Offences against government, justice procedures and organisation of crime 2009': True,
-              'Offences against government, justice procedures and organisation of crime 2010': True,
-              'Offences against government, justice procedures and organisation of crime 2011': True,
-              'Offences against government, justice procedures and organisation of crime 2012': True,
-              'Offences against government, justice procedures and organisation of crime 2013': True,
-              'Offences against government, justice procedures and organisation of crime 2014': True,
-              'Offences against government, justice procedures and organisation of crime 2015': True,
-              'Offences against government, justice procedures and organisation of crime 2016': True,
+              'Robbery, extortion and hijacking offences': True,
+              'Attempts or threats to murder, assaults, harassments and related offences': True,
+              'Year': True,
+              'Dangerous or negligent acts': True,
               'County': True,
               '_id': False}
 
     with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
 
-        projects = collection.find(projection=FIELDS)
-        result = json.dumps(list(projects))
+        new_data = collection.find(projection=FIELDS)
+        result = json.dumps(list(new_data))
     return result
 
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-
+# for getting database on m lab MongoDB
+# mongoimport -h ds135820.mlab.com:35820 -d heroku_m8nfsm78 -c new_data -u heroku_m8nfsm78 -p eq55vmr1br17alr2djut1joke3 --file garda_stations.csv --type csv --headerline

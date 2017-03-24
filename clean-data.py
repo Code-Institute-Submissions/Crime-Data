@@ -1,11 +1,12 @@
 from pymongo import MongoClient
 import json
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
 
-DBS_NAME = 'Crime_Data'
-COLLECTION_NAME = 'projects'
+MONGODB_HOST = 'ds135820.mlab.com'
+MONGODB_PORT = 35820
+
+DBS_NAME = 'heroku_m8nfsm78'
+COLLECTION_NAME = 'new_data'
 
 FIELDS = {'x': True, 'y': True,
           'Station': True,
@@ -176,7 +177,7 @@ FIELDS = {'x': True, 'y': True,
 
 with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
     collection = conn[DBS_NAME][COLLECTION_NAME]
-    new_collection = conn[DBS_NAME]['new_data']
+    new_collection = conn[DBS_NAME]['Crime_Data']
 
     stations = collection.find(projection=FIELDS)
 

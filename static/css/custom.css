@@ -45,7 +45,7 @@
 
 
 .dc-select-menu {
-   background: #33CC99;
+   background: #FF5B56;
    width: 80%;
    border: none;
    position: relative;
@@ -73,3 +73,6 @@
     100% { transform: rotate(360deg); }
 }
 
+ul{
+    padding-left: 4px;
+}
