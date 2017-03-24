@@ -8,16 +8,16 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # code for running locally
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'Crime_Data'
-COLLECTION_NAME = 'new_data'
+# MONGODB_HOST = 'localhost'
+# MONGODB_PORT = 27017
+# DBS_NAME = 'Crime_Data'
+# COLLECTION_NAME = 'new_data'
 # code for running locally
 
 # code for running on heroku
-# MONGODB_URI = os.getenv('MONGODB_URI')
-# DBS_NAME = os.getenv('MONGO_DB_NAME', 'Crime_Data')
-# COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'Crime_Data')
+MONGODB_URI = os.getenv('MONGODB_URI')
+DBS_NAME = os.getenv('MONGO_DB_NAME', 'Crime_Data')
+COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'Crime_Data')
 
 
 # code for running on heroku
@@ -46,7 +46,7 @@ def crime_new_data():
               'County': True,
               '_id': False}
 
-    with MongoClient(MONGODB_HOST, MONGODB_PORT) as conn:
+    with MongoClient(COLLECTION_NAME) as conn:
         collection = conn[DBS_NAME][COLLECTION_NAME]
 
         new_data = collection.find(projection=FIELDS)
