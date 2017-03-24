@@ -1,9 +1,9 @@
 import json
+import os
 
 from flask import Flask
 from flask import render_template
 from pymongo import MongoClient
-import os
 
 app = Flask(__name__)
 
@@ -16,14 +16,15 @@ COLLECTION_NAME = 'new_data'
 
 # code for running on heroku
 # MONGODB_URI = os.getenv('MONGODB_URI')
-# DBS_NAME = os.getenv('MONGO_DB_NAME','Crime_Data')
-# COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME','Crime_Data')
+# DBS_NAME = os.getenv('MONGO_DB_NAME', 'Crime_Data')
+# COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'Crime_Data')
+
+
 # code for running on heroku
 
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 
 @app.route("/crime")
