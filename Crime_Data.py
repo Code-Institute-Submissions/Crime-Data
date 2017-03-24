@@ -69,3 +69,5 @@ if __name__ == "__main__":
 # mongoimport -h ds137550.mlab.com:37550 -d heroku_69fn47cd -c new_data -u heroku_69fn47cd -p i9lqct7bi6jv94mbk4dfi4j20 --file Crime_Data_new_data_498887.json
 #
 # mongodb://heroku_69fn47cd:i9lqct7bi6jv94mbk4dfi4j20@ds137550.mlab.com:37550/heroku_69fn47cd
+
+# mongoexport -h ds137550.mlab.com:37550 -d heroku_69fn47cd -c new_data -u heroku_69fn47cd -p i9lqct7bi6jv94mbk4dfi4j20 -o new_data.json

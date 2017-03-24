@@ -8,7 +8,6 @@ function makeGraphs(error, new_dataJson) {
     document.getElementById("simon").style.display = "inline-block";
     document.onreadystatechange = function () {
         var state = document.readyState
-        var state = document.readyState
         if (state == 'interactive') {
             document.getElementById('contents').style.visibility = "hidden";
         } else if (state == 'complete') {
@@ -114,7 +113,7 @@ function makeGraphs(error, new_dataJson) {
         return d["Year"]
     });
 
-     var yearGroup = yearDim.group();
+    var yearGroup = yearDim.group();
 
     //Define values (to be used in charts)
     var minDate = yearDim.bottom(1)[0]["Year"];
@@ -154,27 +153,27 @@ function makeGraphs(error, new_dataJson) {
 
     attemptsChart
         .width(768)
-          .height(380)
-          .x(d3.scale.ordinal())
-          .xUnits(dc.units.ordinal)
-          .brushOn(false)
-          .xAxisLabel('Fruit')
-          .yAxisLabel('Quantity Sold')
-          .dimension(yearDim)
-          .barPadding(0.1)
-          .outerPadding(0.05)
-          .group(attemptsGroup);
-
-       /* .width(800)
-        .height(250)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .height(380)
+        .x(d3.scale.ordinal())
+        .xUnits(dc.units.ordinal)
+        .brushOn(false)
+        .xAxisLabel('Fruit')
+        .yAxisLabel('Quantity Sold')
         .dimension(yearDim)
-        .group(attemptsGroup)
-        .transitionDuration(500)
-        .x(d3.scale.linear().domain([minDate, maxDate]))
-        .elasticY(true)
-        .xAxisLabel("Year")
-        .yAxis().ticks(4);*/
+        .barPadding(0.1)
+        .outerPadding(0.05)
+        .group(attemptsGroup);
+
+    /* .width(800)
+     .height(250)
+     .margins({top: 10, right: 50, bottom: 30, left: 50})
+     .dimension(yearDim)
+     .group(attemptsGroup)
+     .transitionDuration(500)
+     .x(d3.scale.linear().domain([minDate, maxDate]))
+     .elasticY(true)
+     .xAxisLabel("Year")
+     .yAxis().ticks(4);*/
 
 
     /*forBarChart
