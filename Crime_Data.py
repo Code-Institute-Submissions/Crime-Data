@@ -19,7 +19,6 @@ MONGODB_URI = os.getenv('MONGODB_URI')
 DBS_NAME = os.getenv('MONGO_DB_NAME', 'Crime_Data')
 COLLECTION_NAME = os.getenv('MONGO_COLLECTION_NAME', 'Crime_Data')
 
-
 # code for running on heroku
 
 @app.route('/')
