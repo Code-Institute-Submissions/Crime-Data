@@ -8,10 +8,10 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # code for running locally
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'Crime_Data'
-COLLECTION_NAME = 'new_data'
+# MONGODB_HOST = 'localhost'
+# MONGODB_PORT = 27017
+# DBS_NAME = 'Crime_Data'
+# COLLECTION_NAME = 'new_data'
 # code for running locally
 
 # code for running on heroku
