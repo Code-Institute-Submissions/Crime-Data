@@ -61,27 +61,27 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <ul id="accordion" role="tablist" aria-multiselectable="true">
-                    <li>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingOne">
-                                <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                       aria-expanded="true"
-                                       aria-controls="collapseOne">
-                                        Overview
-                                    </a>
-                                </h5>
-                            </div>
-
-
-                            {#
-                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="card-block">
-                                </div>
-                            </div>
-#}
-                        </div>
-                    </li>
+{#                    <li>#}
+{#                        <div class="card">#}
+{#                            <div class="card-header" role="tab" id="headingOne">#}
+{#                                <h5 class="mb-0">#}
+{#                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"#}
+{#                                       aria-expanded="true"#}
+{#                                       aria-controls="collapseOne">#}
+{#                                        Overview#}
+{#                                    </a>#}
+{#                                </h5>#}
+{#                            </div>#}
+{##}
+{##}
+{#                            #}
+{#                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">#}
+{#                                <div class="card-block">#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+{#                    </li>#}
                     <li>
                         <div class="card">
 
@@ -114,143 +114,39 @@
 
                         </div>
                     </li>
-                    <li>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingThree">
-                                <h5 class="mb-0">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"
-                                       href="#collapseThree"
-                                       aria-expanded="false" aria-controls="collapseThree">
-                                        Crimes </a>
-                                </h5>
-
-                            </div>
-                            <div id="collapseThree" class="collapse" role="tab panel" aria-labelledby="headingThree">
-                                <div class="card-block">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+{#                    <li>#}
+{#                        <div class="card">#}
+{#                            <div class="card-header" role="tab" id="headingThree">#}
+{#                                <h5 class="mb-0">#}
+{#                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion"#}
+{#                                       href="#collapseThree"#}
+{#                                       aria-expanded="false" aria-controls="collapseThree">#}
+{#                                        Crimes </a>#}
+{#                                </h5>#}
+{##}
+{#                            </div>#}
+{#                            <div id="collapseThree" class="collapse" role="tab panel" aria-labelledby="headingThree">#}
+{#                                <div class="card-block">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </li>#}
                 </ul>
             </ul>
         </div>
 
 
-        {# <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Crime Analysis of Ireland
-                </a>
-            </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-
-
-            <li>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger">Provinces</button>
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Leinster</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Munster</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Connacht</a></li>
-                    </ul>
-                </div>
-
-
-            <li>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger">Counties</button>
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Counties</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </div>
-            </li>
-
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">
-                    <form action={{ url_for('index') }} method='POST'>
-
-                    </form>
-                </a>
-            </li>
-        </ul>
-    </div>#}
-        <!-- /#sidebar-wrapper -->
-
-        {#<!-- Map -->
-    <div class="col-sm-12">
-                    <div class="chart-wrapper">
-                      <div class="chart-title">
-                        Distribution of Donations
-                      </div>
-                      <div class="chart-stage">
-                        <div id="ireland-map-chart" data-step="5" data-intro="Interactive map showing the crimes by county. The darker shades of blue are the higher crimes. Click on the states to filter the dashboard." style="font-weight: normal" data-position="right"></div>
-                      </div>
-                    </div>
-                  </div>
-    <!-- Map -->#}
-
-        <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div>
                         <a href="#menu-toggle" class="btn btn-default arrow-left" id="menu-toggle"><span
-                                class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Menu</a>
+                                class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> Filter</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
 
-        <!-- menu select -->
-        {#         <div ID="select1" class="col-bg-12">#}
-        {#            <div class="chart-wrapper">#}
-        {#                <div class="chart-title">#}
-        {#                    Select County#}
-        {#                </div>#}
-        {#                <div class="chart-stage">#}
-        {#                    <div id="menu-select"></div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
-        <!-- menu select -->
-
-        {#<!-- select year -->
-{#    <div class="col-bg-12">#}
-        {#        <div class="chart-wrapper">#}
-        {#            <div class="chart-title">#}
-        {#                Select Year#}
-        {#            </div>#}
-        {#            <div class="chart-stage">#}
-        {#                <div id="year-row-chart"></div>#}
-        {#            </div>#}
-        {#        </div>#}
-        {#    </div>#}
-        {#    <!-- select year -->#}
 
         <!-- attempts -->
         <div class="col-bg-12">
