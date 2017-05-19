@@ -294,5 +294,3 @@ function makeGraphs(error, new_dataJson) {
 
     dc.renderAll();
 }
-
-
