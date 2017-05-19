@@ -154,7 +154,7 @@ function makeGraphs(error, new_dataJson) {
     attemptsChart
         .width(768)
         .height(380)
-        .x(d3.scale.ordinal())
+        .x(d3.scale.linear().domain([minDate, maxDate]))
         .xUnits(dc.units.ordinal)
         .brushOn(false)
         .xAxisLabel('Fruit')
